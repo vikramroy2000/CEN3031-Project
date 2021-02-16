@@ -4,6 +4,7 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
+  node: circleci/node@1.1.0
 # Orchestrate or schedule a set of jobs
 jobs:
   build:
@@ -21,7 +22,7 @@ jobs:
           command: npm start
           background: true
       - run: sleep 5
-    - run: npm run test
+      - run: npm run test
 workflows:
   # Name the workflow "welcome"
   welcome:
