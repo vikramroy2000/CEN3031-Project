@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
-    title: String, 
-    desc: String,
+    title: String,
+    message: String,
     creator: String,
-    gifs: [String]
-});
+    selectedFile: String,
+})
 
 const PostProject = mongoose.model('PostProject', postSchema);
 
