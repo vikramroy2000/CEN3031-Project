@@ -3,16 +3,16 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import postRoutes from './routes/posts.js';
+import tpRoutes from './routes/teampairing.js';
 
 const app = express();
-
-
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.use('/posts', postRoutes);
+app.use('/projects', postRoutes);
+app.use('/teampairing', tpRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://chrisschmidt021:cen3031mongodb@cluster0.dqqix.mongodb.net/test?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

@@ -9,4 +9,6 @@ router.post('/', createPost);
 router.patch('/:id', updatePost);
 
 
+// router.get('/')
+
 export default router;

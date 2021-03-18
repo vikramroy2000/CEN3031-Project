@@ -9,7 +9,7 @@ export const getPosts = async (req, res) => {
     try {
         const postProjects = await PostProject.find();
                 
-        res.status(200).json(postProject);
+        res.status(200).json(postProjects);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
