@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import NavBar from './components/NavBar/NavBar';
+//import NavBar from './components/NavBar/NavBar';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import { getPosts } from './actions/posts';
-import useStyles from './styles';
+//import useStyles from './styles';
 
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
-  const classes = useStyles();
+  //const classes = useStyles();
 
   useEffect(() => {
     dispatch(getPosts());

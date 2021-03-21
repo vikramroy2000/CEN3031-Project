@@ -3,13 +3,29 @@ import { Grid, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 
 import Group from './Group/Group';
+function groupMaker(num, mem1, mem2, mem3, mem4) {
+    return {num, mem1, mem2, mem3, mem4};
+}
 
 const Groups = () => {
+    //const groups = useSelector((state) => state.groups);
+    const groups = [
+        groupMaker(1, "jacob", "jim", "jerry", "john"),
+        groupMaker(2, "carl", "cam", "carly", "carry"),
+        groupMaker(3, "hank", "pym", "ant", "man"),
+        groupMaker(4, "charlie", "bravo", "delta", "alpha"),
+        groupMaker(5, "charlie", "bravo", "delta", "alpha"),
+        groupMaker(6, "charlie", "bravo", "delta", "alpha")
+    ]
     return (
-        <div>
-            <Group></Group>
-            <Group></Group>
-        </div>
+        <Grid container alignItems="stretch" spacing={3}>
+            {groups.map((group) => (
+                <Grid item xs={12} sm={6} md={6} lg={4}>
+                    <Group group={group} />
+                </Grid>
+            ))}
+        </Grid>
     )
 }
+
 export default Groups;

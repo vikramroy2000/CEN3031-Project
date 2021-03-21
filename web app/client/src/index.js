@@ -18,6 +18,7 @@ ReactDOM.render(
                 <NavBar />
                 <Switch>
                     <Route path="/" exact component={() => <App />} />
+                    <Route path="/projects" exact component={() => <App />} />
                     <Route path="/teampairing" exact component={() => <TeamPairing />} />
                 </Switch>
             </Router>

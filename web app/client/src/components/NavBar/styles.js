@@ -8,4 +8,8 @@ export default makeStyles((theme) => ({
         color: 'rgba(255, 255, 255, 1)',
         flexGrow: 1
     },
+    button: {
+        color: 'rgba(255, 255, 255, 1)',
+        alignSelf: 'right',
+    }
 }));

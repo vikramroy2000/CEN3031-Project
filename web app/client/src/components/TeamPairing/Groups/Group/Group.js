@@ -1,15 +1,18 @@
 import React from 'react';
-import { Card, Typography, CardContent } from '@material-ui/core';
-const Group = () => {
+import { Card, Typography,  CardHeader, CardActions, Button } from '@material-ui/core';
+const Group = ({ group }) => {
     return (
-        <Card>
+        <Card style={{height: 225, width: 250}}>
+            <CardHeader align="center" title={"Group " + group.num}/>
             <div>
-                <Typography variant="h6">Title</Typography>
-                <Typography variant="body2">Body</Typography>
+                <Typography align="center" variant="body1">{group.mem1}</Typography>
+                <Typography align="center" variant="body1">{group.mem2}</Typography>
+                <Typography align="center" variant="body1">{group.mem3}</Typography>
+                <Typography align="center" variant="body1">{group.mem4}</Typography>
             </div>
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">Desc</Typography>
-            </CardContent>
+            <CardActions>
+                <Button style={{margin: "auto", backgroundColor: "#f57e42"}} size="small">View Team</Button>
+            </CardActions>
         </Card>
     )
 }
