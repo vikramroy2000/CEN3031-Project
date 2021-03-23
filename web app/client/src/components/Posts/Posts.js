@@ -10,7 +10,7 @@ const Posts = ({ setCurrentId }) => {
   const classes = useStyles();
 
   return (
-    !posts.length ? <CircularProgress /> : (
+    !posts.length ? <CircularProgress style={{color: "#f57e42"}}/> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts.map((post) => (
           <Grid key={post._id} item xs={12} sm={12} md={12} lg={12}>
