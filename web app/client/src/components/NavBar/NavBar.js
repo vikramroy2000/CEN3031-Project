@@ -13,7 +13,9 @@ const NavBar = () => {
         <AppBar className={classes.appBar} position="static" style={{backgroundColor: "#f57e42"}}>
             <Toolbar>
                 <Typography className={classes.title} variant="h6">CEN3031</Typography>
-                <Button align="right" className={classes.button} variant="h6" href="http://localhost:3000/teampairing">Login</Button>
+                <Button className={classes.button} variant="h6" href="http://localhost:3000/projects">Projects</Button>
+                <Button className={classes.button} variant="h6" href="http://localhost:3000/teampairing">Team Pairing</Button>
+                <Button align="right" className={classes.loginButton} variant="h6" href="http://localhost:3000/teampairing">Login</Button>
                 <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
                     <MenuIcon />
                 </IconButton>

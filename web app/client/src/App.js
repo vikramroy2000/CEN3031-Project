@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grow, Grid } from '@material-ui/core';
+import { Container, Grow, Grid, AppBar, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 //import NavBar from './components/NavBar/NavBar';
 import Posts from './components/Posts/Posts';
@@ -18,6 +18,9 @@ const App = () => {
 
   return (
     <Container maxWidth="lg">
+      <AppBar position="static" color="inherit" style={{margin: "-10px 0 10px 0", borderRadius: 5}}>
+        <Typography variant="h2" align="center" style={{color: "#"}}>Current Projects</Typography>
+      </AppBar>
       <Grow in>
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>

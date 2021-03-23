@@ -10,6 +10,9 @@ export default makeStyles((theme) => ({
     },
     button: {
         color: 'rgba(255, 255, 255, 1)',
+    },
+    loginButton: {
+        color: 'rgba(255, 255, 255, 1)',
         alignSelf: 'right',
     }
 }));

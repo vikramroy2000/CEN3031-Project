@@ -15,7 +15,7 @@ app.use('/', postRoutes);
 app.use('/projects', postRoutes);
 app.use('/teampairing', tpRoutes);
 
-const CONNECTION_URL = 'mongodb+srv://chrisschmidt021:cen3031mongodb@cluster0.dqqix.mongodb.net/test?retryWrites=true&w=majority';
+const CONNECTION_URL = 'mongodb+srv://chrisschmidt021:cen3031mongodb@cluster0.dqqix.mongodb.net/test';
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

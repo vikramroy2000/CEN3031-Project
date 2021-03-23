@@ -11,7 +11,7 @@ const Group = ({ group }) => {
                 <Typography align="center" variant="body1">{group.mem4}</Typography>
             </div>
             <CardActions>
-                <Button style={{margin: "auto", backgroundColor: "#f57e42"}} size="small">View Team</Button>
+                <Button style={{margin: "auto", backgroundColor: "#f57e42"}} size="small">Join Team</Button>
             </CardActions>
         </Card>
     )
