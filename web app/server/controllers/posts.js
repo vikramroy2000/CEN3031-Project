@@ -42,14 +42,22 @@ export const createPost = async (req, res) => {
 }
 
 export const updatePost = async (req, res) => {
-    const { id } = req.params;
-    const { title, message, creator, selectedFile} = req.body;
+    const { id: _id } = req.params;
+    const project = req.body;
     
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const updatedPost = await PostProject.findByIdAndUpdate(_id, project, { new: true });
+    
+    res.json(updatedPost);
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+    await PostProject.findByIdAndRemove(id);
 
-    await PostProject.findByIdAndUpdate(id, updatedPost, { new: true });
-
-    res.json(updatedPost);
+    res.json({ message: 'Post deleted successfully' });
 }

@@ -1,3 +1,0 @@
-worker: cd \web app\client
-worker: npm install
-web: npm start
