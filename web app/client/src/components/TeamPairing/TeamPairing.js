@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container, Typography, AppBar, Grid, Grow, Button, Divider } from '@material-ui/core';
+import { Container, Typography, AppBar, Grid, Grow, Button } from '@material-ui/core';
 import Groups from './Groups/Groups';
 import { getGroups } from '../../actions/groups';
 const TeamPairing = () => {
@@ -27,7 +27,7 @@ const TeamPairing = () => {
                 <Typography variant="h2" align="center" style={{color: "#", margin: "10px"}}>Take Survey</Typography>
                 <Typography variant="body1" align="center" style={{margin: "-10px 0 5px"}}>Take the survey to be automatically placed in the best fit team!</Typography>
                 <div align="center" style={{margin: "10px"}}>
-                    <Button variant="contained" style={{backgroundColor: "#f57e42"}} href="https://docs.google.com/forms/d/1Vgb6VV6iSFx2A4bNZwtwBRnKKS4uILFLGGklulu4Xbg/viewform?edit_requested=true">Get Started</Button>
+                    <Button variant="contained" style={{backgroundColor: "#f57e42"}} href="http://localhost:3000/teampairing/survey">Get Started</Button>
                 </div>
             </AppBar>
         </Container>

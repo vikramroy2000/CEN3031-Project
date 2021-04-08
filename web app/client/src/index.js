@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TeamPairing from './components/TeamPairing/TeamPairing';
+import Survey from './components/TeamPairing/Survey/Survey';
 import reducers from './reducers';
 import NavBar from './components/NavBar/NavBar';
 import App from './App';
@@ -20,6 +21,7 @@ ReactDOM.render(
                     <Route path="/" exact component={() => <App />} />
                     <Route path="/projects" exact component={() => <App />} />
                     <Route path="/teampairing" exact component={() => <TeamPairing />} />
+                    <Route path="/teampairing/survey" exact component={() => <Survey />} />
                 </Switch>
             </Router>
         </div>
