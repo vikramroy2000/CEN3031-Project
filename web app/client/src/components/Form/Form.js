@@ -9,7 +9,7 @@ import { createPost, updatePost } from '../../actions/posts';
 // GET THE CURRENT ID
 
 
-const Form = ({ currentId, setCurrentId}) => {
+const Form = ({ currentId, onClose}) => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', selectedFile: null });
     
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
@@ -19,7 +19,7 @@ const Form = ({ currentId, setCurrentId}) => {
     useEffect(() => {
         if (post) setPostData(post);
     }, [post])
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -29,9 +29,9 @@ const Form = ({ currentId, setCurrentId}) => {
             dispatch(createPost(postData));
         }
         clear();
+        onClose();
     }
     const clear = () => {
-        setCurrentId(null);
         setPostData({ creator: '', title: '', message: '', selectedFile: '' });
     }
     return (
