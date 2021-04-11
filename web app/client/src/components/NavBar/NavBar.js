@@ -15,7 +15,7 @@ const NavBar = () => {
                 <Typography className={classes.title} variant="h6">CEN3031</Typography>
                 <Button className={classes.button} variant="h6" href="http://localhost:3000/projects">Projects</Button>
                 <Button className={classes.button} variant="h6" href="http://localhost:3000/teampairing">Team Pairing</Button>
-                <Button align="right" className={classes.loginButton} variant="h6" href="http://localhost:3000/teampairing">Login</Button>
+                <Button align="right" className={classes.loginButton} variant="h6" href="http://localhost:3000/teampairing" onClick={login}>Login</Button>
                 <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
                     <MenuIcon />
                 </IconButton>

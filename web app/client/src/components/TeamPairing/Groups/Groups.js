@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { Grid } from '@material-ui/core';
+//import { useSelector } from 'react-redux';
 
 import Group from './Group/Group';
 function groupMaker(num, mem1, mem2, mem3, mem4) {
