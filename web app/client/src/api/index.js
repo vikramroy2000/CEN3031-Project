@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 
-const url1 = 'http://localhost:5000/projects';
-const url2 = 'http://localhost:5000/teampairing';
-const url3 = 'http://localhost:5000/teampairing/survey';
+const url1 = '/projects';
+const url2 = '/teampairing';
+const url3 = '/teampairing/survey';
 export const fetchPosts = () => axios.get(url1);
 
 export const createPost = (newPost) => axios.post(url1, newPost);

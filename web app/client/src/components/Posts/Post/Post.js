@@ -13,6 +13,9 @@ import useStyles from './styles';
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+
+    const isLoggedIn = true;
+
     return (
       <Card className={classes.card}>
         <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
@@ -31,7 +34,7 @@ const Post = ({ post, setCurrentId }) => {
           <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button>
+          {isLoggedIn && <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button>}
         </CardActions>
       </Card>
     );

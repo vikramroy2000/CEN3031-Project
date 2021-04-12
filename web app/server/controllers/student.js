@@ -20,3 +20,21 @@ export const getStudent = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
+export const getStudents = async (res) => { 
+    try {
+        const students = await Student.find();
+        
+        res.status(200).json(students);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+export const returnStudents = async () => {
+    try {
+        const students = await Student.find();
+
+        return students;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
