@@ -10,7 +10,7 @@ import { createPost, updatePost } from '../../actions/posts';
 
 
 const Form = ({ currentId, onClose}) => {
-    const [postData, setPostData] = useState({ creator: '', title: '', message: '', selectedFile: null });
+    const [postData, setPostData] = useState({ creator: '', title: '', message: '', file1: null, file2: null, file3: null });
     
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
@@ -32,7 +32,7 @@ const Form = ({ currentId, onClose}) => {
         onClose();
     }
     const clear = () => {
-        setPostData({ creator: '', title: '', message: '', selectedFile: '' });
+        setPostData({ creator: '', title: '', message: '', file1: '', file2: '', file3: '' });
     }
     return (
         <Paper className={classes.paper}>
@@ -41,7 +41,9 @@ const Form = ({ currentId, onClose}) => {
                 <TextField required name="creator" variant="outlined" label="Project Team" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })}/>
                 <TextField required name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })}/>
                 <TextField required name="message" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })}/>
-                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64})}/></div>
+                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, file1: base64})}/></div>
+                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, file2: base64})}/></div>
+                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, file3: base64})}/></div>
                 <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="primary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form>
