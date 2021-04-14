@@ -1,25 +1,44 @@
-import { AppBar, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { AppBar, Typography, Dialog, DialogTitle } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+
 import useStyles from './styles';
+import Login from '../Form/Login';
+
+function LoginDialogue(props) {
+    const { onClose, selectedValue, open } = props;
+    const handleClose = () => {
+      onClose(selectedValue);
+    };
+    
+  
+    return (
+      <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+        <DialogTitle id="simple-dialog-title">Login</DialogTitle>
+        <Login onClose={handleClose}/>
+      </Dialog>
+    )
+}
+
 const NavBar = () => {
     const classes = useStyles();
-    const login = () => {
-
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => {
+        setOpen(true);
     }
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <AppBar className={classes.appBar} position="static" style={{backgroundColor: "#f57e42"}}>
             <Toolbar>
                 <Typography className={classes.title} variant="h6">CEN3031</Typography>
-                <Button className={classes.button} variant="h6" href="http://localhost:3000/projects">Projects</Button>
-                <Button className={classes.button} variant="h6" href="http://localhost:3000/teampairing">Team Pairing</Button>
-                <Button className={classes.button} variant="h6" href="http://localhost:3000/resources">Resources</Button>
-                <Button align="right" className={classes.loginButton} variant="h6" href="http://localhost:3000/teampairing" onClick={login}>Login</Button>
-                <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
-                    <MenuIcon />
-                </IconButton>
+                <Button className={classes.button}  href="/projects">Projects</Button>
+                <Button className={classes.button}  href="/teampairing">Team Pairing</Button>
+                <Button className={classes.button}  href="/resources">Resources</Button>
+                <Button align="right" className={classes.loginButton} onClick={handleOpen}>Login</Button>
+                <LoginDialogue open={open} onClose={handleClose} />
             </Toolbar>
         </AppBar>
     )

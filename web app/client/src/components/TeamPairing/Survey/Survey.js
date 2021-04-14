@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, Grid, Grow, AppBar, Card, CardContent, FormControl, FormControlLabel, RadioGroup, Radio, Button } from '@material-ui/core';
 // import { FormGroup, Checkbox } from '@material/ui-core';
+
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 import { createStudent } from '../../../actions/survey';
+
+
 const Survey = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -12,7 +15,6 @@ const Survey = () => {
         event.preventDefault();
         dispatch(createStudent(formData));
     }
-    
     return (
         <Container maxWidth="lg">
             <AppBar position="static" color="inherit" style={{margin: "-10px 0 10px 0", borderRadius: 5}}>
@@ -109,7 +111,7 @@ const Survey = () => {
                                         </CardContent>
                                     </div>
                                 </Card>
-                                <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth >Submit</Button>
+                                <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" href="/teampairing" fullWidth >Submit</Button>
                             </form>
                         </Grid>
                     </Grid> 

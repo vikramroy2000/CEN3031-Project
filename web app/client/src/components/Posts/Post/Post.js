@@ -3,7 +3,6 @@ import React from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import DeleteIcon from '@material-ui/icons/Delete';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useDispatch } from 'react-redux';
 
 import { deletePost } from '../../../actions/posts';
@@ -25,9 +24,7 @@ function ImageCarousel(props) {
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-
     const isLoggedIn = true;
-    
     return (
       <Card className={classes.card}>
         <ImageCarousel post={post}></ImageCarousel>
@@ -35,9 +32,7 @@ const Post = ({ post, setCurrentId }) => {
           <Typography variant="h6">{post.creator}</Typography>
           <Typography variant="body2"></Typography>
         </div>
-        <div className={classes.overlay2}>
-          <Button style={{ color: 'white' }} size="small" onClick={() => {}}><MoreHorizIcon fontSize="default" /></Button>
-        </div>
+        
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2"></Typography>
         </div>
