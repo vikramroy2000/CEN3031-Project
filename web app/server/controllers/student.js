@@ -20,7 +20,7 @@ export const getStudent = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
-export const getStudents = async (res) => { 
+export const getStudents = async (req, res) => { 
     try {
         const students = await Student.find();
         

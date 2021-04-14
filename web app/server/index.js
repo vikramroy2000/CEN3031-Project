@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import postRoutes from './routes/posts.js';
-import tpRoutes from './routes/teampairing.js';
 
 
 const app = express();
@@ -16,8 +15,6 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use('/', postRoutes);
-app.use('/projects', postRoutes);
-app.use('/teampairing', tpRoutes);
 
 const CONNECTION_URL = process.env.DATABASE;
 const PORT = process.env.PORT || 5000;
