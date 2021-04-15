@@ -28,7 +28,7 @@ const Projects = () => {
   //const classes = useStyles();
 
   const [open, setOpen] = useState(false);
-  const handleClickOpen = () => {
+  const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
@@ -42,7 +42,7 @@ const Projects = () => {
     <Container maxWidth="lg">
       <AppBar position="static" color="inherit" style={{margin: "-10px 0 10px 0", borderRadius: 5}}>
         <Typography variant="h2" align="center" style={{color: "#"}}>Current Projects</Typography>
-        <Button variant="contained" color="primary" onClick={handleClickOpen} style={{borderRadius: "0 0 5px 5px"}}>Submit a Project</Button>
+        <Button variant="contained" color="primary" onClick={handleOpen} style={{borderRadius: "0 0 5px 5px"}}>Submit a Project</Button>
         <SubmitProjects open={open} onClose={handleClose} />
       </AppBar>
       <Grow in>

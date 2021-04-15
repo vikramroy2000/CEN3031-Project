@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Grid, Grow, AppBar, Card, CardContent, FormControl, FormControlLabel, RadioGroup, Radio, Button } from '@material-ui/core';
+import { Container, Typography, TextField, Grid, Grow, AppBar, Card, CardContent, FormControl, FormControlLabel, RadioGroup, Radio, Button, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert'
 // import { FormGroup, Checkbox } from '@material/ui-core';
 
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 import { createStudent } from '../../../actions/survey';
 
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Survey = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({ first: '', last: '', year: '', product: '', progExp: '', IntResIndExp: '', personality: '' });
+    const [open, setOpen] = useState(false);
+    const openDialog = () => {
+        setOpen(true);
+    }
+    const closeDialog = () => {
+        setOpen(false);
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(createStudent(formData));
@@ -24,7 +35,7 @@ const Survey = () => {
                 <Container>
                     <Grid container align="center" justify="space-evenly" spacing={3}>
                         <Grid item xs={12} sm={12} lg={12}>
-                            <form autoComplete="off" noValidate onSubmit={handleSubmit} > 
+                            <form autoComplete="off" noValidate onSubmit={handleSubmit}> 
                                 <Card style={{height: "auto", width: "auto", margin: "10px 0 10px"}}>
                                     <div>
                                         <CardContent>
@@ -111,8 +122,13 @@ const Survey = () => {
                                         </CardContent>
                                     </div>
                                 </Card>
-                                <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" href="/teampairing" fullWidth >Submit</Button>
+                                <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth onClick={openDialog}>Submit</Button>
                             </form>
+                            <Snackbar open={open} onClose={closeDialog}>
+                                <Alert severity="success" onClose={closeDialog}>
+                                    <a href="/teampairing"> Success! Click to redirect.</a>
+                                    </Alert>
+                            </Snackbar>
                         </Grid>
                     </Grid> 
                 </Container>

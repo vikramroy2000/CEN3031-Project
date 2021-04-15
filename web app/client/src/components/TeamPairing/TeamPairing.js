@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Container, Typography, AppBar, Grid, Grow, Button } from '@material-ui/core';
 import Groups from './Groups/Groups';
 import { getGroups } from '../../actions/groups';
-const TeamPairing = (isLoggedIn) => {
+const TeamPairing = () => {
     const [currentId] = useState(0);
     const dispatch = useDispatch();
     useEffect(() => {

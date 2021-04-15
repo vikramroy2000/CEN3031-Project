@@ -1,5 +1,5 @@
 //import mongoose from 'mongoose';
-import group from '../models/postProject.js';
+import group from '../models/groups.js';
 
 export const getGroups = async (req, res) => { 
     try {

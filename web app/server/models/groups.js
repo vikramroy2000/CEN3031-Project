@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
 
 const groupSchema = mongoose.Schema({
-    leader: String,
-    members: [String]
+    mem1: String,
+    mem2: String,
+    mem3: String,
+    mem4: String,
+    mem5: {type: String, default: "unnamed"},
+    num: String
 })
 
 const group = mongoose.model('Group', groupSchema);

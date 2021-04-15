@@ -13,6 +13,8 @@ router.post('/projects/getprojects', createPost);
 router.delete('/projects/getprojects/:id', deletePost);
 router.patch('/:id', updatePost);
 
+router.get('/getteampairing', getGroups);
+
 router.get('/teampairing/survey/getstudents', getStudents);
 router.post('/teampairing/survey/getstudents', createStudent);
 
