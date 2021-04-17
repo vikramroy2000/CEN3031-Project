@@ -4,6 +4,7 @@ import Resources from './components/Resources/Resources';
 import { BrowserRouter as Router } from "react-router-dom";
 import Projects from './components/Projects/Projects';
 import NavBar from './components/NavBar/NavBar';
+import Auth from './components/Login/Auth';
 import { Route, Switch } from 'react-router-dom';
 const App = () => {
     return(
@@ -16,6 +17,7 @@ const App = () => {
                     <Route path="/teampairing" exact component={() => <TeamPairing />} />
                     <Route path="/teampairing/survey" exact component={() => <Survey />} />
                     <Route path="/resources" exact component={() => <Resources />} />
+                    <Route path="/auth" exact component={() => <Auth />} />
                 </Switch>
             </Router>
         </div>

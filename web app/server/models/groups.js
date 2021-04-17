@@ -1,18 +1,10 @@
 import mongoose from 'mongoose';
+import Student from './student.js';
 
-const teamMember = {
-    first: {type:String, default: "-"},
-    last: {type:String, default: "-"}
-}
+
 const groupSchema = mongoose.Schema({
     num: {type: Number, default: 0},
-    members: {type: teamMember, default: [
-        {first: "-", last: "-"},
-        {first: "-", last: "-"},
-        {first: "-", last: "-"},
-        {first: "-", last: "-"},
-        {first: "-", last: "-"}
-    ]}
+    members: []
 })
 
 

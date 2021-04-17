@@ -5,8 +5,8 @@ const GroupDialog = ({ group }) => {
         <Card style={{height: 225, width: 250}}>
             <CardHeader align="center" style={{backgroundColor: "#f57e42", body: "white"}} title={`Group ${group.num}`}></CardHeader>
             <div>
-                {group.members.forEach((mem) => (
-                    <Typography align="center" variant="body1">{`${mem.first} ${mem.last}`}</Typography>
+                {group.members && group.members.map((mem) => (
+                    <Typography key={mem._id} align="center" variant="body1">{`${mem.first} ${mem.last}`}</Typography>
                 ))}
             </div>
             <CardActions>

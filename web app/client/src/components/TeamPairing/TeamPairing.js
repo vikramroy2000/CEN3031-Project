@@ -36,7 +36,7 @@ const TeamPairing = () => {
                         {false && <Button variant="contained" style={{backgroundColor: "#f57e42"}} onClick={makeGroups}>Create Groups</Button>}
                     </div>
                 </Container>
-            </Grow>
+            </Grow> 
         </Container>
     )
 }

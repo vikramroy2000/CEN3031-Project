@@ -1,5 +1,6 @@
 import Student from '../models/student.js';
 import Group from '../models/groups.js';
+import mongoose from 'mongoose';
 
 export const createStudent = async (req, res) => {
     const { first, last, year, product, progExp, IntResIndExp, personality } = req.body;
@@ -30,12 +31,7 @@ export const getStudents = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
-function makeMember(first, last) {
-    return {
-        first: first,
-        last: last
-    }
-}
+
 function makeTeam(teamNumber, team){
     return {
         num: teamNumber,
@@ -55,49 +51,90 @@ async function createGroup(teamNumber, team) {
 
 export const createGroups = async (req, res) => {
     try {
-        console.log("writing groups..");
-        // gets an array of all students
-        const students = await Student.find();
+        Group.deleteMany({}, function(err, result) {
+            if (err) {
+                console.err(err);
+              } else {
+                console.log("Succesfully removed all")
+              }
+        });
         
+        
+        function rankingSorter(firstKey, secondKey, thirdkey) {
+            return function(a, b) {
+                // first sorts by internship experience (with 1 or more first then none)
+                if (a[firstKey] < b[firstKey]) {  
+                    return -1;  
+                } else if (a[firstKey] > b[firstKey]) {  
+                    return 1;  
+                }  
+                else {
+                    // then sorts by personality with extrovert first
+                    if (a[secondKey] > b[secondKey]) {  
+                        return 1;  
+                    } else if (a[secondKey] < b[secondKey]) {  
+                        return -1;  
+                    } else {
+                        // then sort by what product to make
+                        if (a[thirdkey] > b[thirdkey]) {  
+                            return 1;  
+                        } else if (a[thirdkey] < b[thirdkey]) {  
+                            return -1;  
+                        } else {
+                            return 0;
+                        }
+                    }
+                } 
+            }  
+        }
+
+        
+        // gets an array of all students
+        let students = await Student.find()
 
         // find how many teams based on team size
         const numStudentsPerTeam = 4;
-        //const numTeams = students.length/numStudentsPerTeam
-        let numTeamsWithExtra = students.length%numStudentsPerTeam;
-        //console.log("Number of 5 man teams",numTeamsWithExtra)
+        const numTeams = parseInt(students.length/numStudentsPerTeam)
+        //let numTeamsWithExtra = students.length%numStudentsPerTeam;
         
-
-        // put 4 of each students into a team
-        //let teams = [];
-        let team = [];
-
-        let teamNumber = 0;
-        let count = 0;
-        students.map((stud)=>{
-            
-            team.push(makeMember(stud.first, stud.last));
-            if(numTeamsWithExtra>0){
-                if(count%5 == 4){
-                    createGroup(teamNumber, team);
-                    teamNumber++;
-                    team = [];
-                    count = -1;
-                    numTeamsWithExtra--;
-                }
-            }
-            else{
-                if(count%4 == 3){
-                    createGroup(teamNumber, team);
-                    teamNumber++;
-                    team = [];
-                    count = -1;
-                }
-            }
-            count++;
+        
+        // first sort: Attempts to put one advanced on every team, some teams may have more than one advanced programmer
+        students.sort((elem1,elem2)=>{
+            var progEx1 = elem1.progExp
+            var progEx2 = elem2.progExp
+            if (progEx1 < progEx2) {
+                return -1;
+              }
+            else if (progEx1 > progEx2) {
+                return 1;
+              }
+              return 0;
         })
-        //res.status(200);
-        //console.log("Printing",teams)
-        //return teams;
+
+        
+        // assigns each student to a team
+        let teams = students.map((stud,count)=>{
+            return {teamNumber: count, teamMembers: [stud]}
+        })
+        // cuts the team size down to numTeams
+        teams = teams.slice(0,numTeams)
+
+        // reverses teams, so that if a team didn't get an advanced programmer, they will get someone with internship experience
+        teams.reverse()
+        
+        students = students.slice(numTeams)
+        students.sort(rankingSorter("IntResIndExp","personality","product"));
+        
+        students.forEach((stud, count) => {
+            teams[count % numTeams].teamMembers.push(stud);
+        })
+
+        // reverses again for correctly displaying on website
+        teams.reverse()
+        teams.forEach((team)=>{
+            createGroup(team.teamNumber, team.teamMembers);
+        })
+
     } catch (error) {
         console.log("Error",error.message);
     }

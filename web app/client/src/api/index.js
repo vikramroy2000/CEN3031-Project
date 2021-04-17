@@ -10,7 +10,7 @@ export const createPost = (newPost) => axios.post(url1, newPost);
 export const updatePost = (id, updatedPost) => axios.patch(`${url1}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${url1}/${id}`);
 
-export const createGroups = () => axios.get(url2);
+export const createGroups = () => axios.get("/maketeampairing");
 export const fetchGroups = () => axios.get(url2);
 
 

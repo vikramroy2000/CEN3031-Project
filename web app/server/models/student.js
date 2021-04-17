@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
 const studentSchema = mongoose.Schema({
-    first: String, 
-    last: String, 
-    year: String, 
-    product: String, 
-    progExp: String, 
-    IntResIndExp: String, 
-    personality: String
+    first: {type: String, default: "-"}, 
+    last: {type: String, default: "-"}, 
+    year: {type: String, default: "-"}, 
+    product: {type: String, default: "-"}, 
+    progExp: {type: String, default: "-"}, 
+    IntResIndExp: {type: String, default: "-"}, 
+    personality: {type:String, default:"-"}
 })
 
 const Student = mongoose.model('Student', studentSchema);
