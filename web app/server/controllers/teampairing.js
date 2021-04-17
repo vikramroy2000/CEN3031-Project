@@ -1,6 +1,5 @@
 //import mongoose from 'mongoose';
 import group from '../models/groups.js';
-
 export const getGroups = async (req, res) => { 
     try {
         const groups = await group.find();

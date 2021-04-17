@@ -9,3 +9,13 @@ export const getGroups = () => async (dispatch) => {
         console.log(error.message);
     }   
 };
+
+export const createGroups = () => async (dispatch) => {
+    try {
+        const { data } = await api.createGroups();
+
+        dispatch({ type: 'CREATE', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+};

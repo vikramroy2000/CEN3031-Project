@@ -24,7 +24,7 @@ import Group from './Group/Group';
 
 const Groups = () => {
     const groups = useSelector((state) => state.groups);
-
+    
     return (
         <Grid container alignItems="stretch" spacing={3}>
             {groups.map((group) => (
