@@ -6,7 +6,8 @@ const postSchema = mongoose.Schema({
     creator: String,
     file1: String,
     file2: String,
-    file3: String
+    file3: String,
+    display: {type: Boolean, default: false}
 })
 
 const PostProject = mongoose.model('PostProject', postSchema);

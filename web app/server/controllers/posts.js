@@ -28,9 +28,9 @@ export const getPost = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const { title, message, file1, file2, file3, creator } = req.body;
+    const post = req.body;
 
-    const newPostProject = new PostProject({ title, message, file1, file2, file3, creator})
+    const newPostProject = new PostProject({...post})
 
     try {
         await newPostProject.save();
@@ -54,6 +54,7 @@ export const updatePost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
     const { id } = req.params;
+    //if (!req.userId) return res.json({ message: 'Unauthenticated' });
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Typography,  CardHeader, CardActions, Button, Dialog } from '@material-ui/core';
+import { Card, Typography,  CardHeader, CardActions, Dialog, CardActionArea } from '@material-ui/core';
 import GroupDialog from './GroupDialog';
 function DisplayGroup(props) {
     const { onClose, selectedValue, open, group } = props;
@@ -26,14 +26,15 @@ const Group = ({ group }) => {
     
     return (
         <Card style={{height: 225, width: 250}}>
-            <CardHeader align="center" style={{backgroundColor: "#f57e42", body: "white"}} title={`Group ${group.num}`}></CardHeader>
+          <CardActionArea>
+            <CardHeader align="center" style={{backgroundColor: "#f57e42", body: "white"}} title={`Group ${group.num}`} onClick={handleOpen}></CardHeader>
+          </CardActionArea>
             <div>
               {group.members && group.members.map((mem) => (
-                <Typography key={mem._id} align="center" variant="body1">{`${mem.first} ${mem.last}`}</Typography>
+                <Typography style={{margin: "5px 0"}} key={mem._id} align="center" variant="body1">{`${mem.first} ${mem.last}`}</Typography>
               ))}
             </div>
             <CardActions>
-                <Button style={{margin: "auto", backgroundColor: "#f57e42"}} size="small" onClick={handleOpen}>View Team</Button>
                 <DisplayGroup group={group} open={open} onClose={handleClose}/>
             </CardActions>
         </Card>

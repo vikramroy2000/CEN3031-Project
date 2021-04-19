@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Grid, Grow, AppBar, Card, CardContent, FormControl, FormControlLabel, RadioGroup, Radio, Button, Snackbar } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert'
+import { Container, Typography, TextField, Grid, Grow, AppBar, Card, CardContent, FormControl, FormControlLabel, RadioGroup, Radio, Button } from '@material-ui/core';
+
 // import { FormGroup, Checkbox } from '@material/ui-core';
 
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createStudent } from '../../../actions/survey';
-
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const Survey = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
     const [formData, setFormData] = useState({ first: '', last: '', year: '', product: '', progExp: '', IntResIndExp: '', personality: '' });
-    const [open, setOpen] = useState(false);
-    const openDialog = () => {
-        setOpen(true);
-    }
-    const closeDialog = () => {
-        setOpen(false);
-    }
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(createStudent(formData));
+        dispatch(createStudent(formData, history));
     }
     return (
         <Container maxWidth="lg">
@@ -122,13 +113,8 @@ const Survey = () => {
                                         </CardContent>
                                     </div>
                                 </Card>
-                                <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth onClick={openDialog}>Submit</Button>
+                                <Button className={classes.buttonSubmit} variant="contained" size="large" type="submit" fullWidth>Submit</Button>
                             </form>
-                            <Snackbar open={open} onClose={closeDialog}>
-                                <Alert severity="success" onClose={closeDialog}>
-                                    <a href="/teampairing"> Success! Click to redirect.</a>
-                                    </Alert>
-                            </Snackbar>
                         </Grid>
                     </Grid> 
                 </Container>

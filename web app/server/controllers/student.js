@@ -1,6 +1,6 @@
 import Student from '../models/student.js';
 import Group from '../models/groups.js';
-import mongoose from 'mongoose';
+
 
 export const createStudent = async (req, res) => {
     const { first, last, year, product, progExp, IntResIndExp, personality } = req.body;
@@ -55,7 +55,7 @@ export const createGroups = async (req, res) => {
             if (err) {
                 console.err(err);
               } else {
-                console.log("Succesfully removed all")
+                console.log("Succesfully removed all groups")
               }
         });
         

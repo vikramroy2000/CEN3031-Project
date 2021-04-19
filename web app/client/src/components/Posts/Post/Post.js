@@ -1,11 +1,12 @@
 import React from 'react';
-
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Carousel from 'react-material-ui-carousel';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from 'react-redux';
 
-import { deletePost } from '../../../actions/posts';
+import { deletePost, updatePost } from '../../../actions/posts';
 
 import useStyles from './styles';
 
@@ -21,10 +22,11 @@ function ImageCarousel(props) {
     )
 }
 
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const isLoggedIn = true;
+    const user = JSON.parse(localStorage.getItem('profile'));
+
     return (
       <Card className={classes.card}>
         <ImageCarousel post={post}></ImageCarousel>
@@ -41,7 +43,8 @@ const Post = ({ post, setCurrentId }) => {
           <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          {isLoggedIn && <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button>}
+          {user?.result?.user === 'admin' && <Button size="small" color="primary" variant="contained" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button>}
+          {user?.result?.user === 'admin' && <Button size="small" color="primary" variant="contained" onClick={() => dispatch(updatePost(post._id, post))}>{post.display ? <Visibility/> : <VisibilityOff/>} Toggle Visiblity</Button>}
         </CardActions>
       </Card>
     );
