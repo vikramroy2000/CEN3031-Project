@@ -37,7 +37,7 @@ Deployment:
   Client: 
    - cd webapp/client [&& npm install if not done already]
    - npm run build
-    [In the build folder, add a file called _redirects containing /* /index.html 200]
-    Drag and drop the build folder into the deploy section of Netlify
-    Make sure the base url in src/api/index.js matches that of the heroku url
+   - [In the build folder, add a file called _redirects containing /* /index.html 200]
+   - Drag and drop the build folder into the deploy section of Netlify
+   - Make sure the base url in src/api/index.js matches that of the heroku url
     
