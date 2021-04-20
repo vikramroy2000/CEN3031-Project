@@ -16,9 +16,9 @@ jobs:
           steps:
             - run: npm install mocha
             - run: alias mocha='./node_modules/.bin/_mocha'
-            - run: cd server && npm install
+            - run: cd webapp/server && npm install
       - run:
-          command: cd server && npm start
+          command: cd webapp/server && npm start
           background: true
       - run: sleep 5
       - run: npm run test
