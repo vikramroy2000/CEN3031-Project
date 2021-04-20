@@ -14,9 +14,10 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: cd webapp/server
             - run: npm install mocha
             - run: alias mocha='./node_modules/.bin/_mocha'
-            - run: cd /webapp/server && npm install
+            - run: npm install
       - run:
           command: cd /webapp/server && npm start
           background: true
