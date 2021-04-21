@@ -20,6 +20,9 @@ jobs:
       - run:
           command: cd webapp/server && npm start
           background: true
+      - run:
+          name: "Print an env var stored in the Project"
+          command: echo ${JWTKEY}
       - run: sleep 5
       - run: cd webapp/server && npm run test
 
