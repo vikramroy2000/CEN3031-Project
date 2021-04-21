@@ -21,6 +21,6 @@ jobs:
           command: cd webapp/server && npm start
           background: true
       - run: sleep 5
-     # - run: npm run test
+      - run: cd webapp/server && npm run test
 
 
